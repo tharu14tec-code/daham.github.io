@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daham Enterprises | Premium Aluminium - v3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script> 
+        tailwind.config = { 
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: { primary: '#4f46e5' }
+                }
+            }
+        } 
+    </script>
+    <style>
+        body { transition: background-color 0.3s, color 0.3s; }
+        .product-card:hover .product-img { transform: scale(1.05); }
+        .product-img { transition: transform 0.5s ease-in-out; }
+        /* Modal Animation */
+        .modal-enter { animation: modalFadeIn 0.3s ease-out forwards; }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 overflow-x-hidden w-full relative">
+
+    <!-- Simplified Page Loader -->
+    <div id="page-loader" class="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-slate-900 transition-opacity duration-700 ease-in-out">
+        <h2 class="text-3xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 animate-pulse tracking-widest">
+            DAHAM ENTERPRISES
+        </h2>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 flex items-center gap-3">
+        <div class="hidden md:block bg-white dark:bg-slate-800 px-4 py-2 rounded-full shadow-lg border border-slate-100 dark:border-slate-700 text-sm font-medium animate-pulse text-indigo-600 dark:text-indigo-400" data-i18n="waText">Need Help? Chat with us!</div>
+        <a href="https://wa.me/94773365911" target="_blank" class="bg-emerald-500 text-white w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-emerald-500/30 shadow-xl transition-all transform hover:-translate-y-2 hover:scale-110 text-xl md:text-2xl">
+            🤖
+        </a>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl sticky top-0 z-40 px-4 py-3 md:px-6 md:py-4 border-b border-slate-200 dark:border-slate-800 transition-all">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 class="text-lg md:text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 truncate w-48 md:w-auto">DAHAM ENTERPRISES</h1>
+            <div class="flex items-center gap-2 md:gap-4">
+                <button id="lang-btn" class="px-3 py-1.5 md:px-4 bg-indigo-50 hover:bg-indigo-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-indigo-700 dark:text-indigo-300 font-bold text-[10px] md:text-xs rounded-full uppercase transition-colors">EN</button>
+                <button id="theme-btn" class="p-1.5 md:p-2 text-lg md:text-xl hover:scale-110 transition-transform">🌓</button>
+                <button id="menu-btn" class="p-1.5 text-2xl md:hidden">☰</button>
+                
+                <div class="hidden md:flex items-center gap-6 font-medium text-sm ml-4">
+                    <a href="#home" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition" data-i18n="navHome">Home</a>
+                    <a href="#products" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition" data-i18n="navProducts">Products</a>
+                    <a href="#testimonials" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition" data-i18n="navReviews">Reviews</a>
+                    <a href="#contact" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full transition shadow-lg shadow-indigo-200 dark:shadow-none" data-i18n="navContact">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden absolute left-0 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b dark:border-slate-800 p-6 space-y-4 shadow-2xl z-50 rounded-b-3xl">
+            <a href="#home" class="block font-bold text-lg" data-i18n="navHome">Home</a>
+            <a href="#products" class="block font-bold text-lg" data-i18n="navProducts">Products</a>
+            <a href="#testimonials" class="block font-bold text-lg" data-i18n="navReviews">Reviews</a>
+            <a href="#contact" class="block font-bold text-lg text-indigo-600 dark:text-indigo-400" data-i18n="navContact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-20 pb-24 md:pt-32 md:pb-40 px-4 md:px-6 text-center overflow-hidden">
+        <div class="absolute inset-0 z-[-1]">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Aluminium Interior" class="w-full h-full object-cover opacity-20 dark:opacity-10" />
+            <div class="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-slate-50 dark:from-slate-900/90 dark:via-slate-900/80 dark:to-slate-900"></div>
+        </div>
+
+        <div class="max-w-3xl mx-auto mt-4 md:mt-0" data-aos="fade-up" data-aos-duration="1000">
+            <span class="px-3 md:px-4 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-[10px] md:text-xs font-bold tracking-wider uppercase mb-4 md:mb-6 inline-block" data-i18n="heroBadge">Premium Quality</span>
+            <h2 class="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-4 md:mb-6 leading-tight" data-i18n="heroTitle">Modern Aluminium Perfected</h2>
+            <p class="text-base md:text-xl text-slate-600 dark:text-slate-400 mb-8 md:mb-10 px-2" data-i18n="heroDesc">High quality doors, windows and art designs crafted for elegance and durability.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 px-4">
+                <a href="#products" class="w-full sm:w-auto px-6 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-semibold transition-all hover:-translate-y-1 shadow-xl shadow-indigo-600/30 text-sm md:text-base" data-i18n="heroBtn1">Explore Products</a>
+                <a href="#contact" class="w-full sm:w-auto px-6 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-indigo-600 dark:hover:border-indigo-400 rounded-full font-semibold transition-all hover:-translate-y-1 shadow-sm text-sm md:text-base" data-i18n="heroBtn2">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20">
+        <div class="text-center mb-8 md:mb-12" data-aos="fade-up">
+            <h2 class="text-2xl md:text-4xl font-extrabold mb-3 md:mb-4" data-i18n="prodTitle">Our Products</h2>
+            <p class="text-sm md:text-base text-slate-500 dark:text-slate-400 max-w-2xl mx-auto" data-i18n="prodDesc">Click on a product to view details and place your order.</p>
+        </div>
+        
+        <div id="filter-buttons-container" class="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12" data-aos="fade-in" data-aos-delay="100">
+            <button class="filter-btn active bg-indigo-600 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full text-[11px] md:text-sm font-semibold shadow-md transition" data-filter="all">Loading...</button>
+        </div>
+        
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div class="text-center col-span-full text-indigo-600 dark:text-indigo-400 py-10 text-sm md:text-base font-bold animate-pulse">
+                දත්ත ලබාගනිමින් පවතී... (Loading Products)
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 md:py-20 px-4 md:px-6 bg-indigo-50/50 dark:bg-slate-800/30">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-2xl md:text-4xl font-extrabold mb-8 md:mb-12" data-aos="fade-up" data-i18n="testiTitle">What Our Clients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-[2rem] shadow-sm border border-slate-100 dark:border-slate-700" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-yellow-400 mb-3 md:mb-4 text-lg md:text-xl">★★★★★</div>
+                    <p class="italic text-sm md:text-base text-slate-600 dark:text-slate-400 mb-4 md:mb-6" data-i18n="review1">"Excellent finish and very professional service. They completed my pantry cupboards right on time."</p>
+                    <h4 class="font-bold text-sm md:text-base">- Kamal Perera</h4>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-[2rem] shadow-sm border border-slate-100 dark:border-slate-700" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-yellow-400 mb-3 md:mb-4 text-lg md:text-xl">★★★★★</div>
+                    <p class="italic text-sm md:text-base text-slate-600 dark:text-slate-400 mb-4 md:mb-6" data-i18n="review2">"High quality doors and windows. The finishing is incredibly smooth and looks very premium."</p>
+                    <h4 class="font-bold text-sm md:text-base">- Nimali Fernando</h4>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-[2rem] shadow-sm border border-slate-100 dark:border-slate-700" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-yellow-400 mb-3 md:mb-4 text-lg md:text-xl">★★★★★</div>
+                    <p class="italic text-sm md:text-base text-slate-600 dark:text-slate-400 mb-4 md:mb-6" data-i18n="review3">"Best aluminium workers in the area! Highly recommended for any custom designs."</p>
+                    <h4 class="font-bold text-sm md:text-base">- Kasun Silva</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div data-aos="fade-up" class="text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4" data-i18n="contactTitle">Let's Build Something Beautiful</h2>
+                <p class="text-sm md:text-lg text-slate-500 dark:text-slate-400 mb-8 md:mb-10" data-i18n="contactDesc">Get in touch with Daham Enterprises for all your aluminium fabrication needs. We provide custom quotations based on your requirements.</p>
+                
+                <div class="space-y-4 md:space-y-6 flex flex-col items-center md:items-start">
+                    <div class="flex items-center gap-4 text-left">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-indigo-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 rounded-full flex items-center justify-center text-lg md:text-xl shrink-0">📍</div>
+                        <div>
+                            <h4 class="font-bold text-sm md:text-base">Location</h4>
+                            <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">Kahatagasthanna, Temple Rd, Thulhiriya.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 text-left">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-indigo-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 rounded-full flex items-center justify-center text-lg md:text-xl shrink-0">📞</div>
+                        <div>
+                            <h4 class="font-bold text-sm md:text-base">Phone</h4>
+                            <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">+94 77 336 5911</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-xl border border-slate-100 dark:border-slate-700" data-aos="fade-up">
+                <form class="space-y-4 md:space-y-6">
+                    <div>
+                        <label class="block text-xs md:text-sm font-bold mb-1.5 md:mb-2 ml-2" data-i18n="formName">Your Name</label>
+                        <input type="text" class="w-full px-5 py-3 md:px-6 md:py-4 text-sm md:text-base rounded-full bg-slate-50 dark:bg-slate-900 border-none focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-xs md:text-sm font-bold mb-1.5 md:mb-2 ml-2" data-i18n="formPhone">Phone Number</label>
+                        <input type="tel" class="w-full px-5 py-3 md:px-6 md:py-4 text-sm md:text-base rounded-full bg-slate-50 dark:bg-slate-900 border-none focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="07X XXX XXXX">
+                    </div>
+                    <div>
+                        <label class="block text-xs md:text-sm font-bold mb-1.5 md:mb-2 ml-2" data-i18n="formMsg">Message</label>
+                        <textarea rows="4" class="w-full px-5 py-3 md:px-6 md:py-4 text-sm md:text-base rounded-[1.5rem] md:rounded-[2rem] bg-slate-50 dark:bg-slate-900 border-none focus:ring-2 focus:ring-indigo-500 outline-none transition resize-none" placeholder="How can we help you?"></textarea>
+                    </div>
+                    <button type="button" class="w-full py-3 md:py-4 text-sm md:text-base bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-full transition-transform hover:-translate-y-1" data-i18n="formBtn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 pt-12 md:pt-16 pb-6 md:pb-8 px-4 md:px-6 rounded-t-[2rem] md:rounded-t-[3rem] mt-6 md:mt-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 pb-8 md:pb-10 border-b border-slate-800/50">
+            <div><h3 class="text-white font-extrabold text-lg md:text-xl">DAHAM ENTERPRISES</h3></div>
+            <div class="flex gap-3 md:gap-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition text-sm">FB</a>
+                <a href="https://wa.me/94773365911" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition text-sm">WA</a>
+            </div>
+        </div>
+        <div class="text-center pt-6 md:pt-8 text-[10px] md:text-xs flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-3 md:gap-4">
+            <p>&copy; 2026 Daham Enterprises. All Rights Reserved.</p>
+            <p class="font-medium">Developed by <span class="text-white">Zentech Studios</span> (Tharusha)</p>
+        </div>
+    </footer>
+
+    <!-- NEW: Product Order Modal Popup -->
+    <div id="product-modal" class="fixed inset-0 z-[60] hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center px-4 transition-opacity duration-300">
+        <div class="bg-white dark:bg-slate-800 w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden modal-enter relative max-h-[90vh] overflow-y-auto border border-slate-200 dark:border-slate-700">
+            
+            <!-- Close Button -->
+            <button id="close-modal" class="absolute top-4 right-4 bg-black/50 text-white hover:bg-red-500 w-8 h-8 rounded-full flex items-center justify-center transition z-10 font-bold">✕</button>
+            
+            <!-- Product Image -->
+            <div class="w-full h-48 md:h-56 bg-slate-200 dark:bg-slate-700 relative">
+                <img id="modal-img" src="" alt="Product" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="p-6 md:p-8">
+                <h3 id="modal-title" class="text-xl md:text-2xl font-extrabold mb-2 text-slate-800 dark:text-white">Product Title</h3>
+                <p id="modal-desc" class="text-sm text-slate-600 dark:text-slate-400 mb-6">Product description.</p>
+                
+                <!-- Order Form inside Modal -->
+                <div class="space-y-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-700">
+                    <h4 class="font-bold text-sm md:text-base border-b border-slate-200 dark:border-slate-700 pb-2 mb-3 text-indigo-600 dark:text-indigo-400" data-i18n="modalFormTitle">Place Your Order</h4>
+                    
+                    <div>
+                        <label class="block text-xs md:text-sm font-bold mb-1 ml-1" data-i18n="modalName">Name</label>
+                        <input type="text" id="order-name" class="w-full px-4 py-2.5 text-sm rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-xs md:text-sm font-bold mb-1 ml-1" data-i18n="modalAddress">Address</label>
+                        <input type="text" id="order-address" class="w-full px-4 py-2.5 text-sm rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="Your Address">
+                    </div>
+                    <div>
+                        <label class="block text-xs md:text-sm font-bold mb-1 ml-1" data-i18n="modalQty">Requirements / Quantity</label>
+                        <input type="text" id="order-qty" class="w-full px-4 py-2.5 text-sm rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="e.g. 2 Doors, 4x5 Window">
+                    </div>
+                    
+                    <button id="wa-order-btn" class="w-full mt-2 py-3 bg-[#25D366] hover:bg-[#1ebd57] text-white font-bold rounded-xl transition-transform hover:-translate-y-1 flex justify-center items-center gap-2 shadow-lg shadow-green-500/30">
+                        <span class="text-xl">💬</span> <span data-i18n="modalOrderBtn">Order via WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // PAGE LOADER LOGIC
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('page-loader');
+            setTimeout(() => {
+                loader.classList.add('opacity-0');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    AOS.init({ once: true, offset: 50 });
+                }, 700);
+            }, 600);
+        });
+
+        // MENU & THEME TOGGLE
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        document.getElementById('theme-btn').addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+        
+        // TRANSLATIONS DATA
+        const translations = {
+            en: {
+                waText: "Need Help? Chat with us!",
+                navHome: "Home", navProducts: "Products", navReviews: "Reviews", navContact: "Contact Us",
+                heroBadge: "Premium Quality", heroTitle: "Modern Aluminium Perfected",
+                heroDesc: "High quality doors, windows and art designs crafted for elegance and durability.",
+                heroBtn1: "Explore Products", heroBtn2: "Get a Quote",
+                prodTitle: "Our Products", prodDesc: "Click on a product to view details and place your order.",
+                testiTitle: "What Our Clients Say",
+                review1: '"Excellent finish and very professional service. They completed my pantry cupboards right on time."',
+                review2: '"High quality doors and windows. The finishing is incredibly smooth and looks very premium."',
+                review3: '"Best aluminium workers in the area! Highly recommended for any custom designs."',
+                contactTitle: "Let's Build Something Beautiful",
+                contactDesc: "Get in touch with Daham Enterprises for all your aluminium fabrication needs. We provide custom quotations based on your requirements.",
+                formName: "Your Name", formPhone: "Phone Number", formMsg: "Message", formBtn: "Send Message",
+                // Modal Translations
+                modalFormTitle: "Place Your Order", modalName: "Name", modalAddress: "Address",
+                modalQty: "Requirements / Quantity", modalOrderBtn: "Order via WhatsApp"
+            },
+            si: {
+                waText: "උදව්වක් අවශ්‍යද?",
+                navHome: "මුල් පිටුව", navProducts: "නිෂ්පාදන", navReviews: "පාරිභෝගික අදහස්", navContact: "අපව අමතන්න",
+                heroBadge: "උසස්ම ප්‍රමිතිය", heroTitle: "නවීන ඇලුමිනියම් පූර්ණ නිමාවෙන්",
+                heroDesc: "ඔබේ නිවසටත් කාර්යාලයටත් අවශ්‍ය ඉහළම තත්ත්වයේ ඇලුමිනියම් දොර ජනෙල් සහ කලා නිර්මාණ.",
+                heroBtn1: "නිෂ්පාදන බලන්න", heroBtn2: "මිල ගණන් දැනගන්න",
+                prodTitle: "අපගේ නිෂ්පාදන", prodDesc: "භාණ්ඩයක විස්තර දැනගැනීමට සහ ඇණවුම් කිරීමට ඒ මත click කරන්න.",
+                testiTitle: "පාරිභෝගික අදහස්",
+                review1: '"ඉතාමත් උසස් නිමාවක් සහ වෘත්තීය සේවාවක්. මගේ පැන්ට්‍රි කබඩ් එක වෙලාවටම හදලා දුන්නා."',
+                review2: '"ඉහළම ප්‍රමිතියේ දොර ජනෙල්. නිමාව ගොඩක් සුමටයි වගේම කල්පවතින පෙනුමක් තියෙනවා."',
+                review3: '"ප්‍රදේශයේ ඉන්න හොඳම ඇලුමිනියම් කාර්මිකයෝ! ඕනෑම අලුත් නිර්මාණයකට මම නිර්දේශ කරනවා."',
+                contactTitle: "අප හා එක්වන්න",
+                contactDesc: "ඔබගේ සියලුම ඇලුමිනියම් වැඩ සඳහා දහම් එන්ටර්ප්‍රයිසස් වෙත අමතන්න. ඔබගේ අවශ්‍යතාවය අනුව සාධාරණ මිල ගණන් ලබා දෙනවා.",
+                formName: "ඔබගේ නම", formPhone: "දුරකථන අංකය", formMsg: "පණිවිඩය", formBtn: "පණිවිඩය යවන්න",
+                // Modal Translations
+                modalFormTitle: "ඔබගේ ඇණවුම යොමු කරන්න", modalName: "නම", modalAddress: "ලිපිනය",
+                modalQty: "අවශ්‍යතාවය / ප්‍රමාණය", modalOrderBtn: "WhatsApp ඔස්සේ ඇණවුම් කරන්න"
+            }
+        };
+
+        const langBtn = document.getElementById('lang-btn');
+        let currentLang = 'en';
+
+        // LANGUAGE TOGGLE
+        langBtn.addEventListener('click', () => {
+            currentLang = (currentLang === 'en') ? 'si' : 'en';
+            langBtn.innerText = (currentLang === 'en') ? 'SI' : 'EN';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+            // Update modal text if open
+            if(window.currentSelectedProduct) {
+               document.getElementById('modal-title').innerText = currentLang === 'en' ? window.currentSelectedProduct.titleEn : window.currentSelectedProduct.titleSi || window.currentSelectedProduct.titleEn;
+               document.getElementById('modal-desc').innerText = currentLang === 'en' ? window.currentSelectedProduct.descEn : window.currentSelectedProduct.descSi || window.currentSelectedProduct.descEn;
+            }
+        });
+
+        // MODAL LOGIC
+        const modal = document.getElementById('product-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const waOrderBtn = document.getElementById('wa-order-btn');
+        
+        function openModal(product) {
+            window.currentSelectedProduct = product; // Save globally for lang toggle
+            document.getElementById('modal-img').src = product.image || 'https://via.placeholder.com/600x400';
+            
+            // Set text based on current language
+            document.getElementById('modal-title').innerText = currentLang === 'en' ? product.titleEn : product.titleSi || product.titleEn;
+            document.getElementById('modal-desc').innerText = currentLang === 'en' ? product.descEn : product.descSi || product.descEn;
+            
+            // Clear inputs
+            document.getElementById('order-name').value = '';
+            document.getElementById('order-address').value = '';
+            document.getElementById('order-qty').value = '';
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close on clicking outside the modal box
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // WHATSAPP ORDER SUBMISSION
+        waOrderBtn.addEventListener('click', () => {
+            const name = document.getElementById('order-name').value.trim();
+            const address = document.getElementById('order-address').value.trim();
+            const qty = document.getElementById('order-qty').value.trim();
+            const productTitle = window.currentSelectedProduct.titleEn;
+
+            if(!name || !qty) {
+                alert(currentLang === 'en' ? "Please fill your name and requirements." : "කරුණාකර ඔබගේ නම සහ අවශ්‍යතාවය ඇතුලත් කරන්න.");
+                return;
+            }
+
+            const phone = "94773365911"; // Daham Enterprises WA Number
+            let msg = `*New Order Inquiry* 🛒\n\n`;
+            msg += `*Product:* ${productTitle}\n`;
+            msg += `*Name:* ${name}\n`;
+            if(address) msg += `*Address:* ${address}\n`;
+            msg += `*Requirements:* ${qty}\n\n`;
+            msg += `_Sent via Daham Enterprises Website_`;
+
+            const encodedMsg = encodeURIComponent(msg);
+            const waUrl = `https://wa.me/${phone}?text=${encodedMsg}`;
+            
+            window.open(waUrl, '_blank');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCG2y9r42U45v8x9uGVjv9u8DUU7VFoWnI",
+            authDomain: "daham-enterprice.firebaseapp.com",
+            projectId: "daham-enterprice",
+            storageBucket: "daham-enterprice.firebasestorage.app",
+            messagingSenderId: "554395892614",
+            appId: "1:554395892614:web:d454a239debb9e55c54a07"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Store fetched products to use in Modal
+        let productsData = []; 
+
+        async function loadDynamicProducts() {
+            try {
+                // Load Categories
+                const categoriesSnapshot = await getDocs(collection(db, "categories"));
+                const filterContainer = document.getElementById('filter-buttons-container');
+                
+                let filterHTML = `<button class="filter-btn active bg-indigo-600 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full text-[11px] md:text-sm font-semibold shadow-md transition" data-filter="all">All</button>`;
+                
+                categoriesSnapshot.forEach((doc) => {
+                    const cat = doc.data();
+                    filterHTML += `<button class="filter-btn bg-white dark:bg-slate-800 px-4 py-2 md:px-6 md:py-2.5 rounded-full text-[11px] md:text-sm font-semibold border border-slate-200 dark:border-slate-700 hover:border-indigo-500 transition" data-filter="${cat.id}">${cat.nameEn || 'Category'}</button>`;
+                });
+                filterContainer.innerHTML = filterHTML;
+
+                // Load Products
+                const productsSnapshot = await getDocs(collection(db, "products"));
+                const productGrid = document.getElementById('product-grid');
+                let productsHTML = '';
+
+                productsSnapshot.forEach((doc) => {
+                    const prod = doc.data();
+                    prod.id = doc.id; // Store ID
+                    productsData.push(prod); // Save to array
+
+                    productsHTML += `
+                    <div class="product-card group bg-white dark:bg-slate-800 rounded-[2rem] p-4 shadow-sm hover:shadow-2xl border border-slate-100 dark:border-slate-700 cursor-pointer" data-category="${prod.categoryId}" onclick="triggerModal('${prod.id}')">
+                        <div class="overflow-hidden rounded-[1.5rem] mb-4 md:mb-6 aspect-[4/3] bg-slate-100 dark:bg-slate-700 relative">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                                <span class="bg-indigo-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">Order Now</span>
+                            </div>
+                            <img src="${prod.image || 'https://via.placeholder.com/600x400'}" alt="${prod.titleEn}" class="product-img w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-bold text-lg md:text-xl px-2 mb-1.5 product-title" data-en="${prod.titleEn}" data-si="${prod.titleSi || prod.titleEn}">${prod.titleEn || 'Product Name'}</h3>
+                    </div>`;
+                });
+                
+                if(productsSnapshot.empty) {
+                    productGrid.innerHTML = `<div class="text-center col-span-full py-8 bg-indigo-50 dark:bg-slate-800 rounded-[2rem] text-sm md:text-base">දැනට නිෂ්පාදන කිසිවක් නොමැත. කරුණාකර Admin Panel එකෙන් එකතු කරන්න.</div>`;
+                } else {
+                    productGrid.innerHTML = productsHTML;
+                    // Auto translate loaded products if lang is already SI
+                    if(currentLang === 'si') {
+                        document.querySelectorAll('.product-title').forEach(el => {
+                            el.innerText = el.getAttribute('data-si');
+                        });
+                    }
+                }
+
+                attachFilterLogic();
+
+            } catch (error) {
+                console.error("Firebase Error: ", error);
+                document.getElementById('product-grid').innerHTML = `<p class="text-red-500 font-bold text-center col-span-full py-8 text-sm md:text-base">දත්ත ලබාගැනීමේදී දෝෂයක් ඇතිවිය! Database Permissions පරීක්ෂා කරන්න.</p>`;
+            }
+        }
+
+        function attachFilterLogic() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-indigo-600', 'text-white');
+                        b.classList.add('bg-white', 'dark:bg-slate-800');
+                    });
+                    btn.classList.add('bg-indigo-600', 'text-white');
+                    btn.classList.remove('bg-white', 'dark:bg-slate-800');
+
+                    const filter = btn.getAttribute('data-filter');
+                    document.querySelectorAll('.product-card').forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            card.classList.add('animate-[fadeIn_0.5s_ease-in-out]');
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Expose function to global scope so inline onclick can use it
+        window.triggerModal = function(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if(product) {
+                openModal(product);
+            }
+        };
+
+        loadDynamicProducts();
+    </script>
+</body>
+</html>
+
+
